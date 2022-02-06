@@ -19,8 +19,8 @@ namespace RockPaperScissors
             string computerChoice;
 
             if (computerValue == Rock)
-            { 
-                computerChoice = "rock"; 
+            {
+                computerChoice = "rock";
             }
             else if (computerValue == Paper)
             {
@@ -35,23 +35,23 @@ namespace RockPaperScissors
             Console.Write("Please enter rock, paper or scissors ");
             playerChoice = Console.ReadLine().ToLower();
 
-            if (playerChoice.Equals ("rock"))
+            if (playerChoice.Equals("rock"))
             {
                 playerValue = Rock;
             }
-            else if (playerChoice.Equals ("paper")) 
+            else if (playerChoice.Equals("paper"))
             {
                 playerValue = Paper;
             }
-            else if (playerChoice.Equals ("scissors"))
+            else if (playerChoice.Equals("scissors"))
             {
                 playerValue = Scissors;
-            } 
+            }
             else
             {
                 Console.WriteLine($"{playerChoice} is not a valid choice");
             }
-            
+
             Console.WriteLine($"Computer chose {computerChoice}, player chose {playerChoice}");
 
             if (playerValue == computerValue)
@@ -59,12 +59,33 @@ namespace RockPaperScissors
                 Console.WriteLine("It's a draw");
             }
             else if ((playerValue - 1 == computerValue) || (playerValue == Rock && computerValue == Scissors))
-            { 
-                Console.WriteLine("Player Wins"); 
-            } 
+            {
+                Console.WriteLine("Player Wins");
+            }
             else
             {
                 Console.WriteLine("The computer wins!");
+            }
+        }
+        /**
+* Returns a boolean response to a yes/no question.
+*
+* @param string
+*            The question to be asked.
+* @return True if the answer was yes, False if no.
+*/
+        public static bool GetYesOrNo(string question)
+        {
+            char answer;
+            while (true)  // infinite loop.  return will exit the method, thus terminating the loop
+            {
+                Console.Write($"{question} ");
+                answer = Console.ReadKey(true).KeyChar;
+                answer = char.ToLower(answer);
+                if (answer.Equals('y'))
+                    return true;
+                if (answer.Equals('n'))
+                    return false;
             }
         }
     }
